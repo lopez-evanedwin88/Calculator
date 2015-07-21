@@ -12,101 +12,106 @@ import java.util.Locale;
  */
 public class OpeModel {
 
+    String num1 , num2 , operand;
+    OpePresenter present;
 
-    public void operate(String num1, String num2, String opr, Context context, OpePresenter present)
+    public OpeModel(String num1, String num2, String operand)
     {
+        this.num1=num1;
+        this.num2=num2;
+        this.operand=operand;
+    }
 
+    public boolean checkifValid()
+    {
+        boolean temp = false;
         if(TextUtils.isEmpty(num1))
         {
             present.frstnumError();
+            temp = true;
         }
 
         if(TextUtils.isEmpty(num2))
         {
             present.secnumError();
+            temp = true;
         }
 
-        if(opr.toString().equals("+"))
-        {
-            NumberFormat format = NumberFormat.getInstance(Locale.US);
-            Number number = null;
-            Number number2 = null;
+        return temp;
+    }
 
+    public double operate()
+    {
+        double total = 0;
+
+        if(operand.toString().equals("+"))
+        {
             try
             {
-                    number = format.parse(num1.replaceAll("[^0-9.]",""));
-                    number2 = format.parse(num2.replaceAll("[^0-9.]", ""));
-                    double frstnum = number.doubleValue();
-                    double secnum = number2.doubleValue();
-                    double sum = frstnum + secnum;
-                    present.secondActivity(frstnum, secnum, sum, opr);
-
+                NumberFormat format = NumberFormat.getInstance();
+                String temp1 = format.format(num1);
+                String temp2 = format.format(num2);
+                double frstnum = Double.valueOf(temp1);
+                double secnum = Double.valueOf(temp2);
+                total = frstnum + secnum;
             }
             catch (Exception e)
             {
                 e.printStackTrace();
             }
-
-
         }
 
-        if(opr.toString().equals("-"))
+        if(operand.toString().equals("-"))
         {
-            NumberFormat format = NumberFormat.getInstance(Locale.US);
-            Number number = null;
-            Number number2 = null;
-
-            try {
-
-                number = format.parse(num1.replaceAll("[^0-9.]", ""));
-                number2 = format.parse(num2.replaceAll("[^0-9.]", ""));
-                double frstnum = number.doubleValue();
-                double secnum = number2.doubleValue();
-                double diff = frstnum - secnum;
-                present.secondActivity(frstnum, secnum, diff, opr);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        if(opr.toString().equals("*"))
-        {
-            NumberFormat format = NumberFormat.getInstance(Locale.US);
-            Number number = null;
-            Number number2 = null;
-
             try
             {
-                number = format.parse(num1.replaceAll("[^0-9.]", ""));
-                number2 = format.parse(num2.replaceAll("[^0-9.]", ""));
-                double frstnum = number.doubleValue();
-                double secnum = number2.doubleValue();
-                double prod = frstnum * secnum;
-                present.secondActivity(frstnum, secnum, prod, opr);
-            } catch (Exception e)
+                NumberFormat format = NumberFormat.getInstance();
+                String temp1 = format.format(num1);
+                String temp2 = format.format(num2);
+                double frstnum = Double.valueOf(temp1);
+                double secnum = Double.valueOf(temp2);
+                total = frstnum - secnum;
+            }
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
         }
 
-        if(opr.toString().equals("/"))
+        if(operand.toString().equals("*"))
         {
-            NumberFormat format = NumberFormat.getInstance(Locale.US);
-            Number number = null;
-            Number number2 = null;
-
-            try {
-                number = format.parse(num1.replaceAll("[^0-9.]",""));
-                number2 = format.parse(num2.replaceAll("[^0-9.]",""));
-                double frstnum = number.doubleValue();
-                double secnum = number2.doubleValue();
-                double div = frstnum / secnum;
-                present.secondActivity(frstnum,secnum,div,opr);
-            } catch (Exception e) {
+            try
+            {
+                NumberFormat format = NumberFormat.getInstance();
+                String temp1 = format.format(num1);
+                String temp2 = format.format(num2);
+                double frstnum = Double.valueOf(temp1);
+                double secnum = Double.valueOf(temp2);
+                total = frstnum * secnum;
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
 
+        if(operand.toString().equals("/"))
+        {
+            try
+            {
+                NumberFormat format = NumberFormat.getInstance();
+                String temp1 = format.format(num1);
+                String temp2 = format.format(num2);
+                double frstnum = Double.valueOf(temp1);
+                double secnum = Double.valueOf(temp2);
+                total = frstnum * secnum;
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
 
+        return  total;
     }
 }

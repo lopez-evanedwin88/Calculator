@@ -9,6 +9,8 @@ public interface IOpeView {
 
     public void secNumberError();
 
-    public void toastmsg(double num1, double num2);
+    public void nextActivity(String num1, String num2, String ope, double sum);
+
+    public void errorInput(String num1, String num2, String ope);
 
 }

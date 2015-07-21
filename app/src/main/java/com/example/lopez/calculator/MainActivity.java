@@ -1,6 +1,7 @@
 package com.example.lopez.calculator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -134,10 +135,16 @@ public class MainActivity extends AppCompatActivity implements IOpeView{
     }
 
     @Override
-    public void toastmsg(double num1, double num2) {
-        Toast.makeText(this,"num1: "+num1+"num2: "+num2,Toast.LENGTH_SHORT).show();
+    public void nextActivity(String num1, String num2, String ope, double sum) {
+
+        Intent i = new Intent(this, SecondActivity.class);
+
     }
 
+    @Override
+    public void errorInput(String num1, String num2, String ope) {
+
+    }
 
 
 }

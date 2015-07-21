@@ -138,12 +138,21 @@ public class MainActivity extends AppCompatActivity implements IOpeView{
     public void nextActivity(String num1, String num2, String ope, double sum) {
 
         Intent i = new Intent(this, SecondActivity.class);
+        i.putExtra("num1", num1);
+        i.putExtra("num2", num2);
+        i.putExtra("ope", ope);
+        i.putExtra("sum", sum);
+        startActivity(i);
 
     }
 
     @Override
     public void errorInput(String num1, String num2, String ope) {
-
+        Intent i = new Intent(this, SecondActivity.class);
+        i.putExtra("num1", num1);
+        i.putExtra("num2", num2);
+        i.putExtra("ope", ope);
+        startActivity(i);
     }
 
 

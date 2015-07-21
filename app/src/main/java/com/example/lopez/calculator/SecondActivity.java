@@ -36,10 +36,11 @@ public class SecondActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         DecimalFormat format = new DecimalFormat("#,###.00");
-        num1.setText("" +format.format(getIntent().getExtras().getDouble("num1")));
-        num2.setText(""+format.format(getIntent().getExtras().getDouble("num2")));
-        sum.setText(""+format.format(getIntent().getExtras().getDouble("sum")));
+        num1.setText("" +getIntent().getExtras().getString("num1"));
+        num2.setText(""+getIntent().getExtras().getString("num2"));
         opr.setText(""+getIntent().getExtras().getString("opr"));
+        sum.setText(""+format.format(getIntent().getExtras().getDouble("sum")));
+
     }
 
 }

@@ -6,5 +6,6 @@
     <color name="colorAccent">#F57F17</color>
     <color name="edtTextColor">#FF6F00</color>
     <color name="background">#90A4AE</color>
-
+    <color name="Success">#1B5E20</color>
+    <color name="Error">#b71c1c</color>
 </resources>
